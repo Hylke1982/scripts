@@ -2,6 +2,13 @@
 
 VAGRANT_USER=vagrant
 
+install_required_packages()
+{
+ apt-get install -y -q sudo
+ apt-get install -y -q linux-headers-amd64 build-essential dkms
+ apt-get install -y -q puppet puppet-agent
+}
+
 add_vagrant_user()
 {
  echo "Adding vagrant user"
@@ -23,5 +30,6 @@ add_vagrant_user_as_sudoer()
 }
 
 # Execute base box preparation script
+install_required_packages
 add_vagrant_user
 add_vagrant_user_as_sudoer
